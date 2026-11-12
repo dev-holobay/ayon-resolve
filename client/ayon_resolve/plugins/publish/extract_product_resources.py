@@ -412,6 +412,9 @@ class ExtractProductResources(
         )
         self.log.info("Modified preset path: %s", modified_preset_path)
 
+        data_burnin = "None"
+        if settings["data_burnin"]:
+            data_burnin = "Same as project"
         with maintain_page_by_name("Deliver"):
             if not set_render_preset_from_file(modified_preset_path.as_posix()):
                 raise RuntimeError(
@@ -427,7 +430,7 @@ class ExtractProductResources(
                     f"/ codec '{settings['codec']}'."
                 )
             rendered = render_clip_to_intermediate_file(
-                timeline_item, staging_dir
+                timeline_item, staging_dir, data_burnin
             )
 
         representation = {

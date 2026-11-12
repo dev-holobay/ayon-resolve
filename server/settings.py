@@ -149,6 +149,11 @@ class CreateShotClipModels(BaseSettingsModel):
         title="{shot}"
     )
 
+    data_burnin: bool = SettingsField(
+        False,
+        title="Use Project Settings for burnin if active, otherwise never burnin, exposed from Davinci 21.x up",
+    )
+
     vSyncOn: bool = SettingsField(
         False,
         title="Enable Vertical Sync",

@@ -258,7 +258,8 @@ def _solo_video_track(timeline_item):
 
 def render_clip_to_intermediate_file(
     timeline_item: resolve.TimelineItem,
-    target_render_directory: Path
+    target_render_directory: Path,
+    data_burnin: str,
 ) -> Path | list[Path]:
     """Render a single TimelineItem's range on the currently active timeline.
 
@@ -289,6 +290,7 @@ def render_clip_to_intermediate_file(
         "TargetDir": target_render_directory.as_posix(),
         "CustomName": timeline_item.GetName(),
         "FrameRate": float(media_pool_item.GetClipProperty("FPS")),
+        "DataBurnIn": data_burnin,
     }
     log.info(f"Clip render settings: {pformat(render_settings)}")
 

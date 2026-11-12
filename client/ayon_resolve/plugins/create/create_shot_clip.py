@@ -442,6 +442,13 @@ OTIO file.
                 items=gui_tracks or ["<nothing to select>"],
             ),
 
+            BoolDef(
+                "data_burnin",
+                label="Use Project Settings for burnin",
+                tooltip="If switched on honor the project settings, if"
+                        "switched of disable burnin",
+                default=self.presets["data_burnin"],
+            ),
             # publishSettings
             UILabelDef(
                 label=header_label("Clip Publish Settings")
